@@ -1,0 +1,52 @@
+{
+  "crs_override": null,
+  "stack_path": "data/processed/stack/stack.tif",
+  "samples_path": "data/processed/samples/samples.parquet",
+  "raster_paths": [
+    "data/raw/rasters/lulc.tif",
+    "data/raw/rasters/elevation.tif",
+    "data/raw/rasters/slope.tif",
+    "data/raw/rasters/flow_accumulation.tif",
+    "data/raw/rasters/twi.tif",
+    "data/raw/rasters/ndvi.tif"
+  ],
+  "label_points_csv": "data/raw/labels/labels_points.csv",
+  "label_polygons_path": null,
+  "x_col": "x",
+  "y_col": "y",
+  "target_column": "label",
+  "positive_label": 1,
+  "nodata_strategy": "drop",
+  "train_fraction": 0.7,
+  "val_fraction": 0.15,
+  "test_fraction": 0.15,
+  "random_seed": 42,
+  "model": {
+    "epochs": 40,
+    "batch_size": 256,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "patience": 8,
+    "hidden_channels": 32,
+    "kernel_size": 3,
+    "dropout": 0.2
+  },
+  "outputs": {
+    "models_dir": "data/outputs/models",
+    "metrics_dir": "data/outputs/metrics",
+    "maps_dir": "data/outputs/maps",
+    "scenario_dir": "data/outputs/maps/scenarios"
+  },
+  "prediction": {
+    "tile_size": 512
+  },
+  "scenarios": [
+    {
+      "name": "veg_increase_10pct",
+      "lulc_layer_index": 0,
+      "from_class": 2,
+      "to_class": 5,
+      "fraction": 0.1
+    }
+  ]
+}
